@@ -1,4 +1,13 @@
-const colors = ['black', 'green', 'blue', 'purple', 'red', 'orange', 'yellow', 'white'];
+const colors = [
+  'black',
+  'green',
+  'blue',
+  'purple',
+  'red',
+  'orange',
+  'yellow',
+  'white'
+];
 const numberOfSlots = 5;
 
 function generateCode() {
@@ -20,8 +29,8 @@ function generateCode() {
 
   for (let i = 0; i < numberOfSlots; i++) {
     colorDisplay.innerHTML += `<div
-    style="background-color: ${colorCode[i]}"
-    class="mastermind-circles"
+      style="background-color: ${colorCode[i]}"
+      class="mastermind-circles"
     ></div>`;
   }
 }
@@ -34,9 +43,13 @@ const colorPicker = document.getElementById('color-picker');
 
 generateCode();
 
-for (let i = 0; i < colors.length; i++) {
-  colorPicker.innerHTML += `<div
-  style="background-color: ${colors[i]}"
-  class="mastermind-circles" onclick="sayColor('${colors[i]}')"
-  ></div>`;
+function generatePicker() {
+  for (let i = 0; i < colors.length; i++) {
+    colorPicker.innerHTML += `<div
+      style="background-color: ${colors[i]}"
+      class="mastermind-circles" onclick="sayColor('${colors[i]}')"
+    ></div>`;
+  }
 }
+
+generatePicker();
