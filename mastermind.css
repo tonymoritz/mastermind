@@ -21,6 +21,12 @@ div#display-colors {
   justify-self: center;
 }
 
+#code-guess .mastermind-circles {
+  position: relative;
+  left: -23px;
+  top: -23px;
+}
+
 body {
   background-color: rgb(138, 197, 249);
 }
