@@ -1,19 +1,32 @@
-window.mm = {
-  colorCode: [],
-  colorPicker: document.getElementById('color-picker'),
-  colors: [
-    'black',
-    'blue',
-    'green',
-    'orange',
-    'purple',
-    'red',
-    'white',
-    'yellow'
-  ],
-  guessColors: [],
-  numberOfSlots: 5
-};
+
+
+function init() {
+  window.mm = {
+    colorCode: [],
+    colorPicker: document.getElementById('color-picker'),
+    colors: [
+      'black',
+      'blue',
+      'green',
+      'orange',
+      'purple',
+      'red',
+      'white',
+      'yellow'
+    ],
+    guessColors: [],
+    numberOfSlots: 5
+  };
+
+  const submitButton = document.querySelector('#submit-button')
+  submitButton.addEventListener('click', () => {
+    console.log('guess', mm.guessColors);
+  })
+
+  generateCode();
+
+  generatePicker();
+}
 
 function generateCode() {
   function colorMaker() {
@@ -28,7 +41,7 @@ function generateCode() {
   }
 
   mm.colorCode = colorMaker();
-  console.log(mm.colorCode);
+  console.log('mm.colorCode', mm.colorCode);
   const colorDisplay = document.getElementById('display-colors');
   colorDisplay.innerHTML = '';
 
@@ -41,16 +54,18 @@ function generateCode() {
 }
 
 function addToGuess(color) {
+  if (mm.guessColors.length >= mm.numberOfSlots) {
+    return;
+  }
+
   mm.guessColors.push(color);
-  console.log(mm.guessColors);
+  console.log('mm.guessColors', mm.guessColors);
 
   for (let i = 0; i < mm.guessColors.length; i++) {
     let selectedPeg = document.querySelector(`#guess-${i + 1}`);
     selectedPeg.innerHTML = `<div style="background-color: ${mm.guessColors[i]}" class="mastermind-circles"></div>`;
   }
 }
-
-generateCode();
 
 function generatePicker() {
   for (let i = 0; i < mm.colors.length; i++) {
@@ -61,4 +76,4 @@ function generatePicker() {
   }
 }
 
-generatePicker();
+init();
