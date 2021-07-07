@@ -21,6 +21,11 @@ function init() {
   const submitButton = document.querySelector('#submit-button')
   submitButton.addEventListener('click', () => {
     console.log('guess', mm.guessColors);
+    if (JSON.stringify(mm.guessColors) === JSON.stringify(mm.colorCode)) {
+      console.log("You're right!");
+    } else {
+      console.log("You're wrong!");
+    }
   })
 
   generateCode();
