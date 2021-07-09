@@ -30,7 +30,6 @@ function init() {
   });
 
   generateCode();
-
   generatePicker();
 }
 
