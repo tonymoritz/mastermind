@@ -1,5 +1,3 @@
-
-
 function init() {
   window.mm = {
     colorCode: [],
@@ -18,19 +16,38 @@ function init() {
     numberOfSlots: 5
   };
 
-  const submitButton = document.querySelector('#submit-button')
+  const submitButton = document.querySelector('#submit-button');
+  const rightOrWrong = document.querySelector('#right-or-wrong');
   submitButton.addEventListener('click', () => {
     console.log('guess', mm.guessColors);
     if (JSON.stringify(mm.guessColors) === JSON.stringify(mm.colorCode)) {
       console.log("You're right!");
+      rightOrWrong.innerHTML = 'You Win!';
     } else {
       console.log("You're wrong!");
+      rightOrWrong.innerHTML = "You're WRONG!";
     }
-  })
+  });
 
   generateCode();
 
   generatePicker();
+}
+
+function clearGuess() {
+  for (let i = 0; i < mm.guessColors.length; i++) {
+    let selectedPeg = document.querySelector(`#guess-${i + 1}`);
+    selectedPeg.innerHTML = '';
+  }
+}
+
+function deletePeg() {
+  mm.guessColors.pop();
+  let selectedPeg = document.querySelector(
+    `#guess-${mm.guessColors.length + 1}`
+  );
+  selectedPeg.innerHTML = '';
+  console.log('mm.guesscolors', mm.guessColors);
 }
 
 function generateCode() {

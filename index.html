@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
     <link rel="stylesheet" href="mastermind.css" />
     <title>Mastermind</title>
     <link rel="shortcut icon" href="brain.png" />
@@ -13,8 +15,14 @@
     <div id="wrapper">
       <h1>Welcome to Mastermind</h1>
       <div id="display-colors"></div>
-      <div id="color-picker"></div>
+      <div id="picker-wrapper">
+        <div id="color-picker"></div>
+        <button onclick="deletePeg()" id="back-button">
+          <i class="fa fa-arrow-left fa-4x"></i>
+        </button>
+      </div>
     </div>
+
     <div id="code-guess">
       <div id="guess-1" class="empty-peg"></div>
       <div id="guess-2" class="empty-peg"></div>
@@ -24,8 +32,9 @@
     </div>
     <button id="submit-button">∑†</button>
     <button onclick="generateCode()">
-        <i class="fa fa-refresh fa-4x"></i>
+      <i class="fa fa-refresh fa-4x"></i>
     </button>
+    <h1 id="right-or-wrong"></h1>
     <script src="mastermind.js"></script>
   </body>
 </html>
