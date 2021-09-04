@@ -27,11 +27,23 @@ function init() {
       console.log("You're wrong!");
       rightOrWrong.innerHTML = "You're WRONG!";
     }
+
+    console.log(calcRedPegs());
   });
 
   generateCode();
 
   generatePicker();
+}
+
+function calcRedPegs() {
+  let redPegCount = 0;
+  for (let i = 0; i < mm.numberOfSlots; i++) {
+    if (mm.guessColors[i] === mm.colorCode[i]) {
+      redPegCount++;
+    }
+  }
+  return redPegCount;
 }
 
 function clearGuess() {
@@ -47,7 +59,6 @@ function deletePeg() {
     `#guess-${mm.guessColors.length + 1}`
   );
   selectedPeg.innerHTML = '';
-  console.log('mm.guesscolors', mm.guessColors);
 }
 
 function generateCode() {
@@ -85,7 +96,9 @@ function addToGuess(color) {
 
   for (let i = 0; i < mm.guessColors.length; i++) {
     let selectedPeg = document.querySelector(`#guess-${i + 1}`);
-    selectedPeg.innerHTML = `<div style="background-color: ${mm.guessColors[i]}" class="mastermind-circles"></div>`;
+    selectedPeg.innerHTML = `<div
+      style="background-color: ${mm.guessColors[i]}"
+      class="mastermind-circles"></div>`;
   }
 }
 
