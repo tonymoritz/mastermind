@@ -46,6 +46,18 @@ function calcRedPegs() {
   return redPegCount;
 }
 
+function calcWhitePegs() {
+  let uncheckedColorCode = [...mm.colorCode];
+
+  mm.guessColors.forEach(guessColor => {
+    const foundColorIdx = uncheckedColorCode.findIndex(color => color === guessColor);
+    if (foundColorIdx > -1) {
+      uncheckedColorCode = uncheckedColorCode.filter((_, idx) => idx !== foundColorIdx);
+    }
+  });
+  return mm.numberOfSlots - uncheckedColorCode.length - calcRedPegs();
+}
+
 function clearGuess() {
   for (let i = 0; i < mm.guessColors.length; i++) {
     let selectedPeg = document.querySelector(`#guess-${i + 1}`);
