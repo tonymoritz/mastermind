@@ -16,19 +16,23 @@ function init() {
     numberOfSlots: 5
   };
 
+  function isEqual(a, b) {
+    return JSON.stringify(a) === JSON.stringify(b);
+  }
+
   const submitButton = document.querySelector('#submit-button');
   const rightOrWrong = document.querySelector('#right-or-wrong');
   submitButton.addEventListener('click', () => {
     console.log('guess', mm.guessColors);
-    if (JSON.stringify(mm.guessColors) === JSON.stringify(mm.colorCode)) {
+    if (isEqual(mm.guessColors, mm.colorCode)) {
       console.log("You're right!");
       rightOrWrong.innerHTML = 'You Win!';
     } else {
       console.log("You're wrong!");
       rightOrWrong.innerHTML = "You're WRONG!";
     }
-
-    console.log(calcRedPegs());
+    console.log('Red peg calc: ', calcRedPegs());
+    console.log('White peg calc: ', calcWhitePegs());
   });
 
   generateCode();
@@ -38,11 +42,13 @@ function init() {
 
 function calcRedPegs() {
   let redPegCount = 0;
+
   for (let i = 0; i < mm.numberOfSlots; i++) {
     if (mm.guessColors[i] === mm.colorCode[i]) {
       redPegCount++;
     }
   }
+
   return redPegCount;
 }
 
@@ -50,11 +56,17 @@ function calcWhitePegs() {
   let uncheckedColorCode = [...mm.colorCode];
 
   mm.guessColors.forEach(guessColor => {
-    const foundColorIdx = uncheckedColorCode.findIndex(color => color === guessColor);
+    const foundColorIdx = uncheckedColorCode.findIndex(
+      color => color === guessColor
+    );
+
     if (foundColorIdx > -1) {
-      uncheckedColorCode = uncheckedColorCode.filter((_, idx) => idx !== foundColorIdx);
+      uncheckedColorCode = uncheckedColorCode.filter(
+        (_singleColor, idx) => idx !== foundColorIdx
+      );
     }
   });
+
   return mm.numberOfSlots - uncheckedColorCode.length - calcRedPegs();
 }
 
