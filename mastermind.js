@@ -35,9 +35,19 @@ function init() {
     console.log('White peg calc: ', calcWhitePegs());
   });
 
+  createPegs();
+
   generateCode();
 
   generatePicker();
+}
+
+function createPegs() {
+  for (let i = 0; i < mm.numberOfSlots; i++) {
+    document.querySelector('#code-guess').innerHTML += `<div id="guess-${
+      i + 1
+    }" class="empty-peg"></div>`;
+  }
 }
 
 function calcRedPegs() {
