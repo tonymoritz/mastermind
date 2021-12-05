@@ -6,6 +6,9 @@ div#wrapper {
 
 div#display-colors {
   grid-row: 2;
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .mastermind-circles {
