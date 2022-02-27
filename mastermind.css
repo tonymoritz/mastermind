@@ -4,69 +4,51 @@ div#wrapper {
   max-width: 550px;
 }
 
-#key-pegs {
-  /* grid-template:
-    'a a b b c c' 2fr 2fr 2fr
-    'd d d e e e' 3fr 3fr; */
-  /* grid-template-columns: 2fr 2fr 2fr / 3fr 3fr; */
+.guess-slot {
+  display: flex;
+  align-items: center;
+}
 
+#key-pegs {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: 40px;
-  grid-gap: 5px;
+  grid-auto-rows: 20px;
+  grid-gap: 3px;
+  margin-left: 10px;
 
-  width: 200px;
-  height: 100px;
+  width: 75px;
 }
 
 .peg-hole {
   width: 10px;
   height: 10px;
-  background-color: purple;
+  background-color: #555;
+  border: black solid 0.5px;
+  box-shadow: 1px 1px 3px #ccc inset;
+  border-radius: 500px;
 }
 
 .key-peg {
-  background-color: tomato;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.key-peg:nth-child(-n + 3) {
-  background-color: green;
-}
-.key-peg:nth-child(-n + 3) {
   grid-column: span 2;
 }
+
 .key-peg:nth-child(4),
 .key-peg:nth-child(5) {
   grid-column: span 3;
 }
-/* .key-peg:nth-last-child(2) {
-  grid-row-start: 2;
-  grid-column: 2 / span 2;
-}
-.key-peg:nth-last-child(1) {
-  grid-row-start: 2;
-  grid-column: 4 / span 2;
-} */
 
-/* .key-peg {
-  background-color: blue;
-  border: 1px solid black;
-  height: 20px;
+.key-peg:nth-child(4) {
+  justify-content: flex-end;
+  padding-right: 7px;
 }
 
-.key-pega {
-  background-color: red;
-  border: 1px solid black;
-  height: 20px;
+.key-peg:nth-child(5) {
+  justify-content: flex-start;
+  padding-left: 7px;
 }
-
-.key-pegb {
-  background-color: pink;
-  border: 1px solid black;
-  height: 20px;
-} */
 
 div#display-colors {
   grid-row: 2;
@@ -118,16 +100,14 @@ body {
 .empty-peg {
   width: 15px;
   height: 15px;
-  border-color: black;
-  border-style: solid;
-  border-width: 2px;
   border-radius: 50%;
   background-color: #555;
+  border: black solid 0.5px;
+  box-shadow: 2px 2px 4px #ddd inset;
 }
 
 #code-guess {
   display: flex;
-  margin-bottom: 50px;
   width: 300px;
   justify-content: space-around;
   background: #ddd;
