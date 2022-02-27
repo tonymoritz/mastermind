@@ -42,12 +42,12 @@ div#wrapper {
 
 .key-peg:nth-child(4) {
   justify-content: flex-end;
-  padding-right: 7px;
+  padding-right: 4.7px;
 }
 
 .key-peg:nth-child(5) {
   justify-content: flex-start;
-  padding-left: 7px;
+  padding-left: 4.7px;
 }
 
 div#display-colors {
@@ -113,6 +113,26 @@ body {
   background: #ddd;
   height: 60px;
   align-items: center;
+}
+
+.kp-red:before,
+.kp-white:before {
+  display: block;
+  content: '';
+  position: absolute;
+  height: 17px;
+  width: 17px;
+  border-radius: 1000px;
+  box-shadow: 2px 2px 7px -2px;
+  background-image: radial-gradient(#fff5, #0005);
+}
+
+.kp-white:before {
+  background-color: white;
+}
+
+.kp-red:before {
+  background-color: red;
 }
 
 #picker-wrapper {

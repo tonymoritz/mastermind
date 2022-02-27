@@ -31,8 +31,17 @@ function init() {
       console.log("You're wrong!");
       rightOrWrong.innerHTML = "You're WRONG!";
     }
-    console.log('Red peg calc: ', calcRedPegs());
-    console.log('White peg calc: ', calcWhitePegs());
+    const redCount = calcRedPegs();
+    const whiteCount = calcWhitePegs();
+    console.log('Red peg calc: ', redCount);
+    console.log('White peg calc: ', whiteCount);
+    const miniPegHoles = document.querySelectorAll('.key-peg');
+    for (let i = 0; i < redCount; i++) {
+      miniPegHoles[i].classList.add('kp-red');
+    }
+    for (let i = redCount; i < whiteCount + redCount; i++) {
+      miniPegHoles[i].classList.add('kp-white');
+    }
   });
 
   createPegs();
