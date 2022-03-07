@@ -55,7 +55,7 @@ function createPegs() {
   for (let i = 0; i < mm.numberOfSlots; i++) {
     document.querySelector('#code-guess').innerHTML += `<div id="guess-${
       i + 1
-    }" class="empty-peg"></div>`;
+    }" class="guess-peg-slot"></div>`;
   }
 }
 
@@ -104,6 +104,25 @@ function deletePeg() {
   selectedPeg.innerHTML = '';
 }
 
+function clearPegs() {
+  const hintPegJoin = document.querySelectorAll(
+    '.key-peg.kp-red, .key-peg.kp-white'
+  );
+  console.log('hintpegjoin:', hintPegJoin);
+
+  for (let i = 0; i < mm.guessColors.length; i++) {
+    const selectedPeg = document.querySelector(`#guess-${i + 1}`);
+    selectedPeg.innerHTML = '';
+  }
+
+  for (let i = 0; i < hintPegJoin.length; i++) {
+    hintPegJoin[i].classList.remove(['kp-red', 'kp-white']);
+    // hintPegJoin[i].classList.remove('kp-white');
+  }
+
+  mm.guessColors = [];
+}
+
 function generateCode() {
   function colorMaker() {
     let random;
@@ -120,6 +139,8 @@ function generateCode() {
   console.log('mm.colorCode', mm.colorCode);
   const colorDisplay = document.getElementById('display-colors');
   colorDisplay.innerHTML = '';
+
+  clearPegs();
 
   for (let i = 0; i < mm.numberOfSlots; i++) {
     colorDisplay.innerHTML += `<div
@@ -138,7 +159,7 @@ function addToGuess(color) {
   console.log('mm.guessColors', mm.guessColors);
 
   for (let i = 0; i < mm.guessColors.length; i++) {
-    let selectedPeg = document.querySelector(`#guess-${i + 1}`);
+    const selectedPeg = document.querySelector(`#guess-${i + 1}`);
     selectedPeg.innerHTML = `<div
       style="background-color: ${mm.guessColors[i]}"
       class="mastermind-circles"></div>`;

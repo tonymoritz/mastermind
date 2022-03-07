@@ -97,7 +97,7 @@ body {
   cursor: pointer;
 }
 
-.empty-peg {
+.guess-peg-slot {
   width: 15px;
   height: 15px;
   border-radius: 50%;
