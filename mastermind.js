@@ -116,8 +116,7 @@ function clearPegs() {
   }
 
   for (let i = 0; i < hintPegJoin.length; i++) {
-    hintPegJoin[i].classList.remove(['kp-red', 'kp-white']);
-    // hintPegJoin[i].classList.remove('kp-white');
+    hintPegJoin[i].classList.remove('kp-red', 'kp-white');
   }
 
   mm.guessColors = [];
